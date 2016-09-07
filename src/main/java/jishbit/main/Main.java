@@ -31,7 +31,7 @@ public class Main {
 	public static IGuild guild;
 	
 	String userAgent = "JishBit";
-	String clientID = "	XAdloE1QjMnMyyjZjMtrhqao_1c";
+	String clientID = "XAdloE1QjMnMyyjZjMtrhqao_1c";
 	String redirectURI = "www.google.ca";
 	
 	public static void main(String[] args) throws Exception {
