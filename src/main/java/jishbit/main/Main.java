@@ -81,6 +81,15 @@ public class Main {
 		IMessage msg = event.getMessage();
 		String text = msg.getContent();
 		
+		RestClient restClient = new HttpRestClient();
+		restClient.setUserAgent("JishBit 1.0");
+		
+		Submissions subms = new Submissions(restClient);
+		List<Submission> submissionsSubreddit = subms.ofSubreddit("blackpeopletwitter", SubmissionSort.TOP, -1, 8000, null, null, true);
+		
+		int index = new Random().nextInt(submissionsSubreddit.size());
+		Submission submission = submissionsSubreddit.get(index);
+		
 		if(text.startsWith("`")) {
 			String cmd = text.substring(1).split(" ")[0].toLowerCase();
 			
@@ -94,26 +103,15 @@ public class Main {
 					}		
 				}
 			}
-		}
-		
-		RestClient restClient = new HttpRestClient();
-		restClient.setUserAgent("JishBit 1.0");
-		
-		Submissions subms = new Submissions(restClient);
-		List<Submission> submissionsSubreddit = subms.ofSubreddit("memes", SubmissionSort.TOP, -1, 8000, null, null, true);
-		
-		int index = new Random().nextInt(submissionsSubreddit.size());
-		Submission submission = submissionsSubreddit.get(index);
-		
-		if(text.equalsIgnoreCase("meme")) {
-			String linkolio = submission.getUrl();
-			if(linkolio.contains("imgur.com") && !submission.getUrl().matches(".+\\.[A-Za-z]{1,5}$")) {
-				linkolio += ".jpg";
-				sendMessage(msg.getChannel(), submission.getTitle() + " " + submission.getUrl().replaceAll("&amp;", "&"));
-			} else {
-				sendMessage(msg.getChannel(), submission.getTitle() + " " + submission.getUrl().replaceAll("&amp;", "&"));
-			}
 			
+			if(cmd.equalsIgnoreCase("meme")) {
+				deleteMessage(msg);
+				String linkolio = submission.getUrl();
+				if(linkolio.contains("imgur.com") && !linkolio.matches(".+\\.[A-Za-z]{1,5}$")) {
+					linkolio += ".jpg";
+				}
+				sendMessage(msg.getChannel(), submission.getTitle() + " " + linkolio.replaceAll("&amp;", "&"));
+			}
 		}
 	}
 
@@ -123,4 +121,9 @@ public class Main {
 		} catch(Exception e){}
 	}
 	
+	public static void deleteMessage(IMessage message) {
+		try {
+			message.delete();
+		} catch(Exception e) {}
+	}
 }
