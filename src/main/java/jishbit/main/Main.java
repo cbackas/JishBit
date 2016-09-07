@@ -105,7 +105,7 @@ public class Main {
 		int index = new Random().nextInt(submissionsSubreddit.size());
 		Submission submission = submissionsSubreddit.get(index);
 		
-		if(text.startsWith("meme")) {
+		if(text.equalsIgnoreCase("meme")) {
 			String linkolio = submission.getUrl();
 			if(linkolio.contains("imgur.com") && !submission.getUrl().matches(".+\\.[A-Za-z]{1,5}$")) {
 				linkolio += ".jpg";
