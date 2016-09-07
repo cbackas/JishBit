@@ -85,7 +85,7 @@ public class Main {
 		restClient.setUserAgent("JishBit 1.0");
 		
 		Submissions subms = new Submissions(restClient);
-		List<Submission> submissionsSubreddit = subms.ofSubreddit("blackpeopletwitter", SubmissionSort.TOP, -1, 8000, null, null, true);
+		List<Submission> submissionsSubreddit = subms.ofSubreddit("blackpeopletwitter", SubmissionSort.TOP, -1, 100, null, null, true);
 		
 		int index = new Random().nextInt(submissionsSubreddit.size());
 		Submission submission = submissionsSubreddit.get(index);
@@ -94,6 +94,7 @@ public class Main {
 			String cmd = text.substring(1).split(" ")[0].toLowerCase();
 			
 			if(cmd.equalsIgnoreCase("status")) {
+				deleteMessage(msg);
 				if(msg.getAuthor().getID().equals("73463573900173312")) {
 					try {
 						String status = msg.getContent().split(" ", 2)[1];
