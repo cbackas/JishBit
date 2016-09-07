@@ -35,11 +35,6 @@ public class Main {
 	String redirectURI = "www.google.ca";
 	
 	public static void main(String[] args) throws Exception {
-		try {
-			Main.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath();
-		} catch(URISyntaxException e) {
-			e.printStackTrace();
-		}
 		bot = new Main();
 	}
 	
@@ -50,6 +45,12 @@ public class Main {
 
 	public void connect() {
 		Optional<String> token = Util.getBotToken();
+		if(!token.isPresent()){
+			System.out.println("Add your token to token.txt");
+			System.out.println("Shutting down...");
+			System.exit(0);
+			return;
+		}
 		ClientBuilder cB = new ClientBuilder();
 		cB.withToken(token.get());
 		try {
