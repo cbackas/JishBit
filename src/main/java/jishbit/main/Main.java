@@ -1,6 +1,5 @@
 package jishbit.main;
 
-import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -109,7 +108,7 @@ public class Main {
 			if(cmd.equalsIgnoreCase("meme")) {
 				deleteMessage(msg);
 				String linkolio = submission.getUrl();
-				if(linkolio.contains("imgur.com") && !linkolio.matches(".+\\.[A-Za-z]{1,5}$")) {
+				if(linkolio.contains("imgur.com") && !linkolio.matches(".+\\.[A-Za-z]{1,5}$") && !linkolio.contains("/a/") && !linkolio.contains("/gallery/")) {
 					linkolio += ".jpg";
 				}
 				sendMessage(msg.getChannel(), submission.getTitle() + " " + linkolio.replaceAll("&amp;", "&"));
