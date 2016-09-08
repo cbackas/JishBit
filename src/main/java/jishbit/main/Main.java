@@ -83,7 +83,7 @@ public class Main {
 		String text = msg.getContent();
 		
 		RestClient restClient = new HttpRestClient();
-		restClient.setUserAgent("JishBit 1.0");
+		restClient.setUserAgent("JishBit");
 
 		if(text.startsWith("`")) {
 			String cmd = text.substring(1).split(" ")[0].toLowerCase();
