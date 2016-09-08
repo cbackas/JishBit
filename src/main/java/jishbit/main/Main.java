@@ -52,7 +52,7 @@ public class Main {
 		}
 		ClientBuilder cB = new ClientBuilder();
 		cB.withToken(token.get());
-		clientBuilder.setMaxReconnectAttempts(50);
+		cB.setMaxReconnectAttempts(50);
 		try {
 			client = cB.login();
 		} catch(DiscordException e) {
