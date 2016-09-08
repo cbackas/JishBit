@@ -1,12 +1,12 @@
 package jishbit.main;
 
 public enum Subs {
-    BPT("1", "blackpeopletwitter"),
+    BPT("1", "BlackPeopleTwitter"),
     MEIRL("2", "meirl"),
     ME_IRL("3", "me_irl"),
-    MEMES("4", "memes"),
-    AA("5", "adviceanimals"),
-    FUNNY("6", "funny");
+    MEMES("4", "Memes"),
+    AA("5", "AdviceAnimals"),
+    FUNNY("6", "Funny");
 
     public String number;
     public String subreddit;
