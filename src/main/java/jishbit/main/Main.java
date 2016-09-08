@@ -52,7 +52,7 @@ public class Main {
 		}
 		ClientBuilder cB = new ClientBuilder();
 		cB.withToken(token.get());
-		clientBuilder.setMaxReconnectAttempts(50);
+		cB.setMaxReconnectAttempts(50);
 		try {
 			client = cB.login();
 		} catch(DiscordException e) {
@@ -100,6 +100,7 @@ public class Main {
 					try {
 						String status = msg.getContent().split(" ", 2)[1];
 						client.changeStatus(Status.game(status));
+						sendMessage(msg.getChannel(), "Status changed to: " + status);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}		
