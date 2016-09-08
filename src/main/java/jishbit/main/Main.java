@@ -121,6 +121,14 @@ public class Main {
 				}
 				sendMessage(msg.getChannel(), "*from /r/" + subToUse + ":* " + submission.getTitle() + "\n" + linkolio.replaceAll("&amp;", "&"));
 			}
+			
+			if(cmd.equalsIgnoreCase("list")) {
+				sendMessage(msg.getChannel(), "**Commands** \n `` `status <message>`` - Changes the status of the bot \n `` `meme`` - Posts a dank meme");
+			}
+		}
+		
+		if(text.equalsIgnoreCase("<@222446374271057920>")) {
+			sendMessage(msg.getChannel(), "JishBit the ultimate meme bot! \n Created by *Impervious* \n For a list of commands use `` `list``");
 		}
 	}
 
