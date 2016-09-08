@@ -52,6 +52,7 @@ public class Main {
 		}
 		ClientBuilder cB = new ClientBuilder();
 		cB.withToken(token.get());
+		cB.setMaxReconnectAttempts(50);
 		try {
 			client = cB.login();
 		} catch(DiscordException e) {
@@ -83,13 +84,7 @@ public class Main {
 		
 		RestClient restClient = new HttpRestClient();
 		restClient.setUserAgent("JishBit 1.0");
-		
-		Submissions subms = new Submissions(restClient);
-		List<Submission> submissionsSubreddit = subms.ofSubreddit("blackpeopletwitter", SubmissionSort.TOP, -1, 100, null, null, true);
-		
-		int index = new Random().nextInt(submissionsSubreddit.size());
-		Submission submission = submissionsSubreddit.get(index);
-		
+
 		if(text.startsWith("`")) {
 			String cmd = text.substring(1).split(" ")[0].toLowerCase();
 			
@@ -106,6 +101,18 @@ public class Main {
 			}
 			
 			if(cmd.equalsIgnoreCase("meme")) {
+				Random rand = new Random();
+				int n = rand.nextInt(5) + 1;
+				String subCode = Integer.toString(n);
+				Subs sub = Subs.getSubReddit(subCode);
+				String subToUse = sub.subreddit;
+
+				Submissions subms = new Submissions(restClient);
+				List<Submission> submissionsSubreddit = subms.ofSubreddit(subToUse, SubmissionSort.TOP, -1, 100, null, null, true);
+
+				int index = new Random().nextInt(submissionsSubreddit.size());
+				Submission submission = submissionsSubreddit.get(index);
+
 				deleteMessage(msg);
 				String linkolio = submission.getUrl();
 				if(linkolio.contains("imgur.com") && !linkolio.matches(".+\\.[A-Za-z]{1,5}$") && !linkolio.contains("/a/") && !linkolio.contains("/gallery/")) {
