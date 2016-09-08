@@ -118,7 +118,7 @@ public class Main {
 				if(linkolio.contains("imgur.com") && !linkolio.matches(".+\\.[A-Za-z]{1,5}$") && !linkolio.contains("/a/") && !linkolio.contains("/gallery/")) {
 					linkolio += ".jpg";
 				}
-				sendMessage(msg.getChannel(), submission.getTitle() + " " + linkolio.replaceAll("&amp;", "&"));
+				sendMessage(msg.getChannel(), "*from /r/" + subToUse + ":* " + submission.getTitle() + "\n" + linkolio.replaceAll("&amp;", "&"));
 			}
 		}
 	}
