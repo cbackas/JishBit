@@ -1,7 +1,7 @@
 package jishbit.main;
 
 public enum Subs {
-    BPT("1", "BlackPeopleTwitter"),
+    /*BPT("1", "BlackPeopleTwitter"),
     MEIRL("2", "meirl"),
     ME_IRL("3", "me_irl"),
     MEMES("4", "Memes"),
@@ -9,7 +9,8 @@ public enum Subs {
     FUNNY("6", "Funny"),
 	RC("7", "RageComics"),
 	DM("8", "DankMemes"),
-	FU("9", "fffffffuuuuuuuuuuuu");
+	FU("9", "fffffffuuuuuuuuuuuu");*/
+	IP("1", "iPhone7memes");
 
     public String number;
     public String subreddit;
