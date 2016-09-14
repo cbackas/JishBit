@@ -55,6 +55,7 @@ public class Main {
 		cB.setMaxReconnectAttempts(50);
 		try {
 			client = cB.login();
+			client.changeStatus(Status.game("Memes"));
 		} catch(DiscordException e) {
 			e.printStackTrace();
 		}
@@ -107,7 +108,6 @@ public class Main {
 					try {
 						String name = msg.getContent().split(" ", 2)[1];
 						client.changeUsername(name);
-						client.changePresence(false);
 					} catch(Exception e) {
 						e.printStackTrace();
 					}
