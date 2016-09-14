@@ -95,10 +95,27 @@ public class Main {
 						String status = msg.getContent().split(" ", 2)[1];
 						client.changeStatus(Status.game(status));
 						sendMessage(msg.getChannel(), "Status changed to: " + status);
-					} catch (Exception e) {
+					} catch(Exception e) {
 						e.printStackTrace();
 					}		
 				}
+			}
+			
+			if(cmd.equalsIgnoreCase("name")) {
+				deleteMessage(msg);
+				if(msg.getAuthor().getID().equals("73463573900173312")) {
+					try {
+						String name = msg.getContent().split(" ", 2)[1];
+						client.changeUsername(name);
+						client.changePresence(false);
+					} catch(Exception e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+			if(cmd.equalsIgnoreCase("")) {
+				
 			}
 			
 			if(cmd.equalsIgnoreCase("meme")) {
@@ -119,7 +136,7 @@ public class Main {
 				if(linkolio.contains("imgur.com") && !linkolio.matches(".+\\.[A-Za-z]{1,5}$") && !linkolio.contains("/a/") && !linkolio.contains("/gallery/")) {
 					linkolio += ".jpg";
 				}
-				sendMessage(msg.getChannel(), "*from /r/" + subToUse + ":* " + submission.getTitle() + "\n" + linkolio.replaceAll("&amp;", "&"));
+				sendMessage(msg.getChannel(), "*From /r/" + subToUse + ":* " + submission.getTitle() + "\n" + linkolio.replaceAll("&amp;", "&"));
 			}
 			
 			if(cmd.equalsIgnoreCase("list")) {
@@ -128,7 +145,7 @@ public class Main {
 		}
 		
 		if(text.equalsIgnoreCase("<@222446374271057920>")) {
-			sendMessage(msg.getChannel(), "JishBit the ultimate meme bot! \n Created by *Impervious* \n For a list of commands use `` `list``");
+			sendMessage(msg.getChannel(), "JishBit, the ultimate meme bot! \n Created by *Impervious* \n For a list of commands use `` `list``");
 		}
 	}
 
