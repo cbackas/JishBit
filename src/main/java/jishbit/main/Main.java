@@ -55,7 +55,6 @@ public class Main {
 		cB.setMaxReconnectAttempts(50);
 		try {
 			client = cB.login();
-			client.changeStatus(Status.game("Memes"));
 		} catch(DiscordException e) {
 			e.printStackTrace();
 		}
@@ -100,22 +99,6 @@ public class Main {
 						e.printStackTrace();
 					}		
 				}
-			}
-			
-			if(cmd.equalsIgnoreCase("name")) {
-				deleteMessage(msg);
-				if(msg.getAuthor().getID().equals("73463573900173312")) {
-					try {
-						String name = msg.getContent().split(" ", 2)[1];
-						client.changeUsername(name);
-					} catch(Exception e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			
-			if(cmd.equalsIgnoreCase("")) {
-				
 			}
 			
 			if(cmd.equalsIgnoreCase("meme")) {
