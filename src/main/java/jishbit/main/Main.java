@@ -168,7 +168,7 @@ public class Main {
 				}
 			}
 		}
-		System.out.println("Found meme after " + functionAttempt + " subreddit searches and " + attempts + "posts.");
+		System.out.println("Found meme after " + functionAttempt + " subreddit searches and " + attempts + " posts.");
 		addMeme(submissionToUse.getIdentifier());
 		return submissionToUse;
 	}
