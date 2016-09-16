@@ -73,6 +73,7 @@ public class Main {
 	@EventSubscriber
 	public void onReadyEvent(ReadyEvent e) {
 		System.out.println("Connected.");
+		client.changeStatus(Status.game("Memes"));
 	}
 	
 	@EventSubscriber
@@ -169,14 +170,15 @@ public class Main {
 			}
 		}
 		System.out.println("Found meme after " + functionAttempt + " subreddit searches and " + attempts + " posts.");
-		addMeme(submissionToUse.getIdentifier());
+		addMeme(submissionToUse.getUrl());
 		return submissionToUse;
 	}
 
-	public void addMeme(String postID){
+	public void addMeme(String Url){
 		//remove first element (earliest added meme) when list becomes too big
 		if(submittedMemes.size() >= 100) submittedMemes.remove(0);
-		submittedMemes.add(postID);
+		submittedMemes.add(Url);
+		System.out.println(Url);
 	}
 
 	public static void sendMessage(IChannel channel, String message){
