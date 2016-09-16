@@ -9,7 +9,10 @@ public enum Subs {
     FUNNY("6", "Funny"),
 	RC("7", "RageComics"),
 	DM("8", "DankMemes"),
-	FU("9", "fffffffuuuuuuuuuuuu");
+	FU("9", "fffffffuuuuuuuuuuuu"),
+	TWOMEIRD4MEIRL("10", "2meirl4meirl"),
+	DANKMEMES("11", "dankmemes"),
+	MEME("12", "meme");
 
     public String number;
     public String subreddit;
