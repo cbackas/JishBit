@@ -77,16 +77,10 @@ public class Main {
 	}
 	
 	@EventSubscriber
-	public void onDisconnectEvent(DiscordDisconnectedEvent event) {
-		System.out.println("Reconnecting in 10 seconds...");
-		try {
-			Thread.sleep(1000 * 10);
-			System.out.println("Attempting to reconnect...");
-			connect();
-		} catch(InterruptedException e) {
-			e.printStackTrace();
-		}
-	}
+    	public void onDisconnectEvent(DiscordDisconnectedEvent event) {
+        	System.out.println("BOT DISCONNECTED");
+		System.out.println("Reason: " + event.getReason());
+    	}
 	
 	@EventSubscriber
 	public void onMessageEvent(MessageReceivedEvent event) {
